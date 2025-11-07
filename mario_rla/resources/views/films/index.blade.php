@@ -8,12 +8,26 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h5 class="mb-0">Gestion du catalogue de films</h5>
-                    <a href="#" class="btn btn-primary btn-sm">
+                    <a href="{{ route('films.create') }}" class="btn btn-primary btn-sm">
                         <i class="bi bi-plus-circle"></i> Ajouter un film
                     </a>
                 </div>
 
                 <div class="card-body">
+                    @if(session('success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <i class="bi bi-check-circle"></i> {{ session('success') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+
+                    @if(session('error'))
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <i class="bi bi-exclamation-triangle"></i> {{ session('error') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+
                     @if (empty($films))
                         <div class="alert alert-warning">
                             <i class="bi bi-exclamation-triangle"></i>

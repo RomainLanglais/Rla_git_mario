@@ -72,6 +72,36 @@ class ToadFilmService
         }
     }
 
+    public function createFilm(array $data): ?array
+    {
+        $url = $this->baseUrl . '/films';
+
+        try {
+            $headers = ['Accept' => 'application/json'];
+            $token = $this->getUserToken();
+            if ($token) {
+                $headers['Authorization'] = "Bearer {$token}";
+            }
+
+            Log::info('Création film API', ['url' => $url, 'data' => $data]);
+
+            $response = Http::withHeaders($headers)
+                ->timeout(10)
+                ->post($url, $data);
+
+            if ($response->successful()) {
+                Log::info('Film créé avec succès', ['response' => $response->json()]);
+                return $response->json();
+            }
+
+            Log::warning('Création film KO', ['status' => $response->status(), 'body' => $response->body()]);
+            return null;
+        } catch (\Throwable $e) {
+            Log::error('Erreur création film', ['msg' => $e->getMessage()]);
+            return null;
+        }
+    }
+
     /**
      * Récupère le token JWT depuis la session utilisateur
      */
