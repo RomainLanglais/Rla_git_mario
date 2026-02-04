@@ -1,0 +1,699 @@
+openapi: 3.0.0
+info:
+  title: Peach API
+  description: API pour gérer les opérations CRUD sur les tables film, actor, director, rental, inventory, customer et staff de la base de données Peach, dérivée de Sakila.
+  version: '0.1'
+servers:
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/mchorganization/Peach/0.1
+  - url: http://localhost:8080/
+    description: Serveur local
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: "Token JWT pour l'authentification"
+  schemas:
+    Film:
+      type: object
+      properties:
+        film_id:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+        release_year:
+          type: integer
+        language_id:
+          type: integer
+        rental_duration:
+          type: integer
+        rental_rate:
+          type: number
+          format: float
+        length:
+          type: integer
+        replacement_cost:
+          type: number
+          format: float
+        rating:
+          type: string
+        special_features:
+          type: string
+    Actor:
+      type: object
+      properties:
+        actor_id:
+          type: integer
+        first_name:
+          type: string
+        last_name:
+          type: string
+        last_update:
+          type: string
+          format: date-time
+    Director:
+      type: object
+      properties:
+        director_id:
+          type: integer
+        first_name:
+          type: string
+        last_name:
+          type: string
+        last_update:
+          type: string
+          format: date-time
+    Rental:
+      type: object
+      properties:
+        rental_id:
+          type: integer
+        rental_date:
+          type: string
+          format: date-time
+        inventory_id:
+          type: integer
+        customer_id:
+          type: integer
+        return_date:
+          type: string
+          format: date-time
+        staff_id:
+          type: integer
+        last_update:
+          type: string
+          format: date-time
+    Inventory:
+      type: object
+      properties:
+        inventory_id:
+          type: integer
+        film_id:
+          type: integer
+        store_id:
+          type: integer
+        last_update:
+          type: string
+          format: date-time
+    Customer:
+      type: object
+      properties:
+        customer_id:
+          type: integer
+        store_id:
+          type: integer
+        first_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+        address_id:
+          type: integer
+        active:
+          type: boolean
+        create_date:
+          type: string
+          format: date-time
+        last_update:
+          type: string
+          format: date-time
+    Staff:
+      type: object
+      properties:
+        staff_id:
+          type: integer
+        first_name:
+          type: string
+        last_name:
+          type: string
+        address_id:
+          type: integer
+        email:
+          type: string
+        store_id:
+          type: integer
+        active:
+          type: boolean
+        username:
+          type: string
+        password:
+          type: string
+        last_update:
+          type: string
+          format: date-time
+
+security:
+  - BearerAuth: []
+
+paths:
+  /films:
+    get:
+      summary: Récupère la liste de tous les films
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Une liste de films
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Film'
+    post:
+      summary: Ajoute un nouveau film
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Film'
+      responses:
+        '201':
+          description: Film ajouté avec succès
+  /films/{filmId}:
+    get:
+      summary: Récupère un film par ID
+      security:
+        - BearerAuth: []
+      parameters:
+        - in: path
+          name: filmId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Détails d'un film spécifique
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Film'
+    put:
+      summary: Met à jour un film existant
+      security:
+        - BearerAuth: []
+      parameters:
+        - in: path
+          name: filmId
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Film'
+      responses:
+        '200':
+          description: Film mis à jour avec succès
+    delete:
+      summary: Supprime un film par ID
+      security:
+        - BearerAuth: []
+      parameters:
+        - in: path
+          name: filmId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Film supprimé avec succès
+
+  /actors:
+    get:
+      summary: Récupère la liste de tous les acteurs
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Une liste d'acteurs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Actor'
+    post:
+      summary: Ajoute un nouvel acteur
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Actor'
+      responses:
+        '201':
+          description: Acteur ajouté avec succès
+  /actors/{actorId}:
+    get:
+      summary: Récupère un acteur par ID
+      security:
+        - BearerAuth: []
+      parameters:
+        - in: path
+          name: actorId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Détails d'un acteur spécifique
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Actor'
+    put:
+      summary: Met à jour un acteur existant
+      security:
+        - BearerAuth: []
+      parameters:
+        - in: path
+          name: actorId
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Actor'
+      responses:
+        '200':
+          description: Acteur mis à jour avec succès
+    delete:
+      summary: Supprime un acteur par ID
+      security:
+        - BearerAuth: []
+      parameters:
+        - in: path
+          name: actorId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Acteur supprimé avec succès
+
+  /directors:
+    get:
+      summary: Récupère la liste de tous les réalisateurs
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Une liste de réalisateurs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Director'
+    post:
+      summary: Ajoute un nouveau réalisateur
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Director'
+      responses:
+        '201':
+          description: Réalisateur ajouté avec succès
+  /directors/{directorId}:
+    get:
+      summary: Récupère un réalisateur par ID
+      security:
+        - BearerAuth: []
+      parameters:
+        - in: path
+          name: directorId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Détails d'un réalisateur spécifique
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Director'
+    put:
+      summary: Met à jour un réalisateur existant
+      security:
+        - BearerAuth: []
+      parameters:
+        - in: path
+          name: directorId
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Director'
+      responses:
+        '200':
+          description: Réalisateur mis à jour avec succès
+    delete:
+      summary: Supprime un réalisateur par ID
+      security:
+        - BearerAuth: []
+      parameters:
+        - in: path
+          name: directorId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Réalisateur supprimé avec succès
+
+  /rentals:
+    get:
+      summary: Récupère la liste de toutes les locations
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Une liste de locations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Rental'
+    post:
+      summary: Ajoute une nouvelle location
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Rental'
+      responses:
+        '201':
+          description: Location ajoutée avec succès
+  /rentals/{rentalId}:
+    get:
+      summary: Récupère une location par ID
+      security:
+        - BearerAuth: []
+      parameters:
+        - in: path
+          name: rentalId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Détails d'une location spécifique
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Rental'
+    put:
+      summary: Met à jour une location existante
+      security:
+        - BearerAuth: []
+      parameters:
+        - in: path
+          name: rentalId
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Rental'
+      responses:
+        '200':
+          description: Location mise à jour avec succès
+    delete:
+      summary: Supprime une location par ID
+      security:
+        - BearerAuth: []
+      parameters:
+        - in: path
+          name: rentalId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Location supprimée avec succès
+
+  /inventories:
+    get:
+      summary: Récupère la liste de tous les inventaires
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Une liste d'inventaire
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Inventory'
+    post:
+      summary: Ajoute un nouvel inventaire
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Inventory'
+      responses:
+        '201':
+          description: Inventaire ajouté avec succès
+  /inventories/{inventoryId}:
+    get:
+      summary: Récupère un inventaire par ID
+      security:
+        - BearerAuth: []
+      parameters:
+        - in: path
+          name: inventoryId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Détails d'un inventaire spécifique
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Inventory'
+    put:
+      summary: Met à jour un inventaire existant
+      security:
+        - BearerAuth: []
+      parameters:
+        - in: path
+          name: inventoryId
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Inventory'
+      responses:
+        '200':
+          description: Inventaire mis à jour avec succès
+    delete:
+      summary: Supprime un inventaire par ID
+      security:
+        - BearerAuth: []
+      parameters:
+        - in: path
+          name: inventoryId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Inventaire supprimé avec succès
+
+  /customers:
+    get:
+      summary: Récupère la liste de tous les clients
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Une liste de clients
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Customer'
+    post:
+      summary: Ajoute un nouveau client
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+      responses:
+        '201':
+          description: Client ajouté avec succès
+  /customers/{customerId}:
+    get:
+      summary: Récupère un client par ID
+      security:
+        - BearerAuth: []
+      parameters:
+        - in: path
+          name: customerId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Détails d'un client spécifique
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+    put:
+      summary: Met à jour un client existant
+      security:
+        - BearerAuth: []
+      parameters:
+        - in: path
+          name: customerId
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+      responses:
+        '200':
+          description: Client mis à jour avec succès
+    delete:
+      summary: Supprime un client par ID
+      security:
+        - BearerAuth: []
+      parameters:
+        - in: path
+          name: customerId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Client supprimé avec succès
+
+  /staffs:
+    get:
+      summary: Récupère la liste de tous les membres du personnel
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Une liste de membres du personnel
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Staff'
+    post:
+      summary: Ajoute un nouveau membre du personnel
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Staff'
+      responses:
+        '201':
+          description: Membre du personnel ajouté avec succès
+  /staffs/{staffId}:
+    get:
+      summary: Récupère un membre du personnel par ID
+      security:
+        - BearerAuth: []
+      parameters:
+        - in: path
+          name: staffId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Détails d'un membre du personnel spécifique
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Staff'
+    put:
+      summary: Met à jour un membre du personnel existant
+      security:
+        - BearerAuth: []
+      parameters:
+        - in: path
+          name: staffId
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Staff'
+      responses:
+        '200':
+          description: Membre du personnel mis à jour avec succès
+    delete:
+      summary: Supprime un membre du personnel par ID
+      security:
+        - BearerAuth: []
+      parameters:
+        - in: path
+          name: staffId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Membre du personnel supprimé avec succès

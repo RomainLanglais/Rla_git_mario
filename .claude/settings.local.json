@@ -1,24 +1,7 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git fetch:*)",
-      "Bash(git pull:*)",
-      "Bash(composer install:*)",
-      "Bash(/c/BTS/dev/xampp/php/php.exe /c/Users/rla/AppData/Local/ComposerSetup/bin/composer:*)",
-      "Bash(where:*)",
-      "Bash(node --version:*)",
-      "Bash(npm install:*)",
-      "Bash(/c/xampp/php/php.exe /c/Users/rla/AppData/Local/ComposerSetup/bin/composer install:*)",
-      "Bash(export PATH=\"/c/xampp/php:$PATH\")",
-      "Bash(php artisan:*)",
-      "Bash(npm run build:*)",
-      "Bash(php:*)",
-      "Bash(test:*)",
-      "Bash(composer:*)",
-      "Bash(cmd.exe /c \"C:\\xampp\\php\\php.exe -r \"\"copy(''https://getcomposer.org/installer'', ''composer-setup.php'');\"\" && C:\\xampp\\php\\php.exe composer-setup.php && C:\\xampp\\php\\php.exe -r \"\"unlink(''composer-setup.php'');\"\" && C:\\xampp\\php\\php.exe composer.phar install\")",
-      "Bash(/c/xampp/php/php.exe \"C:/Users/rla/AppData/Local/ComposerSetup/bin/composer.phar\" install:*)"
-    ],
-    "deny": [],
-    "ask": []
+      "Bash(tree:*)"
+    ]
   }
 }

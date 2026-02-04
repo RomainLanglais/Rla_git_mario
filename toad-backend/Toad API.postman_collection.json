@@ -1,0 +1,3078 @@
+{
+	"info": {
+		"_postman_id": "cb373c6d-99f7-45de-9bc7-40d43ac04525",
+		"name": "Toad API",
+		"description": "API pour gérer les opérations CRUD sur les tables film, actor, director, rental, inventory, customer et staff de la base de données Peach, dérivée de Sakila.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9150408"
+	},
+	"item": [
+		{
+			"name": "films",
+			"item": [
+				{
+					"name": "{filmId}",
+					"item": [
+						{
+							"name": "Récupère un film par ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/films/:filmId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"films",
+										":filmId"
+									],
+									"variable": [
+										{
+											"key": "filmId",
+											"value": "9385",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Détails d'un film spécifique",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/films/:filmId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"films",
+												":filmId"
+											],
+											"variable": [
+												{
+													"key": "filmId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"film_id\": 835,\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"release_year\": 3263,\n  \"language_id\": 9175,\n  \"rental_duration\": 8559,\n  \"rental_rate\": 3733.929918996288,\n  \"length\": 380,\n  \"replacement_cost\": 19.577713004836905,\n  \"rating\": \"string\",\n  \"special_features\": \"string\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Met à jour un film existant",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"film_id\": 835,\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"release_year\": 3263,\n  \"language_id\": 9175,\n  \"rental_duration\": 8559,\n  \"rental_rate\": 3733.929918996288,\n  \"length\": 380,\n  \"replacement_cost\": 19.577713004836905,\n  \"rating\": \"string\",\n  \"special_features\": \"string\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/films/:filmId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"films",
+										":filmId"
+									],
+									"variable": [
+										{
+											"key": "filmId",
+											"value": "9385",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Film mis à jour avec succès",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"film_id\": 835,\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"release_year\": 3263,\n  \"language_id\": 9175,\n  \"rental_duration\": 8559,\n  \"rental_rate\": 3733.929918996288,\n  \"length\": 380,\n  \"replacement_cost\": 19.577713004836905,\n  \"rating\": \"string\",\n  \"special_features\": \"string\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/films/:filmId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"films",
+												":filmId"
+											],
+											"variable": [
+												{
+													"key": "filmId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "Supprime un film par ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/films/:filmId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"films",
+										":filmId"
+									],
+									"variable": [
+										{
+											"key": "filmId",
+											"value": "9385",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Film supprimé avec succès",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/films/:filmId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"films",
+												":filmId"
+											],
+											"variable": [
+												{
+													"key": "filmId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": null
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Récupère la liste de tous les films",
+					"request": {
+						"auth": {
+							"type": "jwt",
+							"jwt": [
+								{
+									"key": "secret",
+									"value": "P7vREsA2RLdQHOvUn2bAkFOSfEqiCAdG",
+									"type": "string"
+								},
+								{
+									"key": "algorithm",
+									"value": "HS256",
+									"type": "string"
+								},
+								{
+									"key": "isSecretBase64Encoded",
+									"value": false,
+									"type": "boolean"
+								},
+								{
+									"key": "payload",
+									"value": "{}",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "headerPrefix",
+									"value": "Bearer",
+									"type": "string"
+								},
+								{
+									"key": "queryParamKey",
+									"value": "token",
+									"type": "string"
+								},
+								{
+									"key": "header",
+									"value": "{}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/films",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"films"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Une liste de films",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/films",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"films"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"film_id\": 2444,\n    \"title\": \"string\",\n    \"description\": \"string\",\n    \"release_year\": 1611,\n    \"language_id\": 3507,\n    \"rental_duration\": 4436,\n    \"rental_rate\": 8895.6476325938,\n    \"length\": 3530,\n    \"replacement_cost\": 3329.8259901960405,\n    \"rating\": \"string\",\n    \"special_features\": \"string\"\n  },\n  {\n    \"film_id\": 9052,\n    \"title\": \"string\",\n    \"description\": \"string\",\n    \"release_year\": 473,\n    \"language_id\": 7001,\n    \"rental_duration\": 7656,\n    \"rental_rate\": 546.95112096941,\n    \"length\": 6855,\n    \"replacement_cost\": 3647.830913956123,\n    \"rating\": \"string\",\n    \"special_features\": \"string\"\n  }\n]"
+						}
+					]
+				},
+				{
+					"name": "Ajoute un nouveau film",
+					"request": {
+						"auth": {
+							"type": "jwt",
+							"jwt": [
+								{
+									"key": "secret",
+									"value": "P7vREsA2RLdQHOvUn2bAkFOSfEqiCAdG",
+									"type": "string"
+								},
+								{
+									"key": "algorithm",
+									"value": "HS256",
+									"type": "string"
+								},
+								{
+									"key": "isSecretBase64Encoded",
+									"value": false,
+									"type": "boolean"
+								},
+								{
+									"key": "payload",
+									"value": "{}",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "headerPrefix",
+									"value": "Bearer",
+									"type": "string"
+								},
+								{
+									"key": "queryParamKey",
+									"value": "token",
+									"type": "string"
+								},
+								{
+									"key": "header",
+									"value": "{}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"filmId\": null,\n        \"title\": \"ACADEMY DINOSAUR II\",\n        \"description\": \"A Epic Drama of a Feminist And a Mad Scientist who must Battle a Teacher in The Canadian Rockies\",\n        \"releaseYear\": 2025,\n        \"originalLanguageId\": null,\n        \"rentalDuration\": 6,\n        \"rentalRate\": 0.99,\n        \"length\": 186,\n        \"replacementCost\": 20.99,\n        \"rating\": \"PG\",\n        \"specialFeatures\": \"Deleted Scenes,Behind the Scenes\",\n        \"lastUpdate\": \"2006-02-15T06:03:42\",\n        \"directors\": [\n            {\n                \"directorId\": 1,\n                \"firstName\": \"Steven\",\n                \"lastName\": \"Spielberg\",\n                \"lastUpdate\": \"2025-09-25T13:05:08\"\n            }\n        ]\n }",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/films",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"films"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Film ajouté avec succès",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"film_id\": 835,\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"release_year\": 3263,\n  \"language_id\": 9175,\n  \"rental_duration\": 8559,\n  \"rental_rate\": 3733.929918996288,\n  \"length\": 380,\n  \"replacement_cost\": 19.577713004836905,\n  \"rating\": \"string\",\n  \"special_features\": \"string\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/films",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"films"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "actors",
+			"item": [
+				{
+					"name": "{actorId}",
+					"item": [
+						{
+							"name": "Récupère un acteur par ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/actors/:actorId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"actors",
+										":actorId"
+									],
+									"variable": [
+										{
+											"key": "actorId",
+											"value": "9385",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Détails d'un acteur spécifique",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/actors/:actorId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"actors",
+												":actorId"
+											],
+											"variable": [
+												{
+													"key": "actorId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"actor_id\": 2707,\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"last_update\": \"1979-12-19T16:29:47.252Z\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Met à jour un acteur existant",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"actor_id\": 2707,\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"last_update\": \"1979-12-19T16:29:47.252Z\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/actors/:actorId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"actors",
+										":actorId"
+									],
+									"variable": [
+										{
+											"key": "actorId",
+											"value": "9385",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Acteur mis à jour avec succès",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"actor_id\": 2707,\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"last_update\": \"1979-12-19T16:29:47.252Z\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/actors/:actorId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"actors",
+												":actorId"
+											],
+											"variable": [
+												{
+													"key": "actorId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "Supprime un acteur par ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/actors/:actorId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"actors",
+										":actorId"
+									],
+									"variable": [
+										{
+											"key": "actorId",
+											"value": "9385",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Acteur supprimé avec succès",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/actors/:actorId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"actors",
+												":actorId"
+											],
+											"variable": [
+												{
+													"key": "actorId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": null
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Récupère la liste de tous les acteurs",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/actors",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"actors"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Une liste d'acteurs",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/actors",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"actors"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"actor_id\": 3584,\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"last_update\": \"2001-10-15T08:26:26.216Z\"\n  },\n  {\n    \"actor_id\": 7762,\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"last_update\": \"1961-03-10T20:20:48.412Z\"\n  }\n]"
+						}
+					]
+				},
+				{
+					"name": "Ajoute un nouvel acteur",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"actor_id\": 2707,\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"last_update\": \"1979-12-19T16:29:47.252Z\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/actors",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"actors"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Acteur ajouté avec succès",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"actor_id\": 2707,\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"last_update\": \"1979-12-19T16:29:47.252Z\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/actors",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"actors"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "directors",
+			"item": [
+				{
+					"name": "{directorId}",
+					"item": [
+						{
+							"name": "Récupère un réalisateur par ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/directors/:directorId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"directors",
+										":directorId"
+									],
+									"variable": [
+										{
+											"key": "directorId",
+											"value": "9385",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Détails d'un réalisateur spécifique",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/directors/:directorId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"directors",
+												":directorId"
+											],
+											"variable": [
+												{
+													"key": "directorId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"director_id\": 122,\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"last_update\": \"1985-05-19T11:18:09.143Z\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Met à jour un réalisateur existant",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"director_id\": 122,\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"last_update\": \"1985-05-19T11:18:09.143Z\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/directors/:directorId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"directors",
+										":directorId"
+									],
+									"variable": [
+										{
+											"key": "directorId",
+											"value": "9385",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Réalisateur mis à jour avec succès",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"director_id\": 122,\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"last_update\": \"1985-05-19T11:18:09.143Z\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/directors/:directorId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"directors",
+												":directorId"
+											],
+											"variable": [
+												{
+													"key": "directorId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "Supprime un réalisateur par ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/directors/:directorId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"directors",
+										":directorId"
+									],
+									"variable": [
+										{
+											"key": "directorId",
+											"value": "9385",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Réalisateur supprimé avec succès",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/directors/:directorId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"directors",
+												":directorId"
+											],
+											"variable": [
+												{
+													"key": "directorId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": null
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Récupère la liste de tous les réalisateurs",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/directors",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"directors"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Une liste de réalisateurs",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/directors",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"directors"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"director_id\": 3377,\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"last_update\": \"2022-06-09T02:24:08.165Z\"\n  },\n  {\n    \"director_id\": 3242,\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"last_update\": \"1999-11-09T22:34:43.200Z\"\n  }\n]"
+						}
+					]
+				},
+				{
+					"name": "Ajoute un nouveau réalisateur",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"director_id\": 122,\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"last_update\": \"1985-05-19T11:18:09.143Z\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/directors",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"directors"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Réalisateur ajouté avec succès",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"director_id\": 122,\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"last_update\": \"1985-05-19T11:18:09.143Z\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/directors",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"directors"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "rentals",
+			"item": [
+				{
+					"name": "{rentalId}",
+					"item": [
+						{
+							"name": "Récupère une location par ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/rentals/:rentalId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"rentals",
+										":rentalId"
+									],
+									"variable": [
+										{
+											"key": "rentalId",
+											"value": "9385",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Détails d'une location spécifique",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/rentals/:rentalId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"rentals",
+												":rentalId"
+											],
+											"variable": [
+												{
+													"key": "rentalId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"rental_id\": 6697,\n  \"rental_date\": \"1992-12-13T03:43:13.780Z\",\n  \"inventory_id\": 5244,\n  \"customer_id\": 6191,\n  \"return_date\": \"1984-10-22T15:47:06.762Z\",\n  \"staff_id\": 4125,\n  \"last_update\": \"1973-03-22T17:29:07.911Z\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Met à jour une location existante",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"rental_id\": 6697,\n  \"rental_date\": \"1992-12-13T03:43:13.780Z\",\n  \"inventory_id\": 5244,\n  \"customer_id\": 6191,\n  \"return_date\": \"1984-10-22T15:47:06.762Z\",\n  \"staff_id\": 4125,\n  \"last_update\": \"1973-03-22T17:29:07.911Z\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/rentals/:rentalId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"rentals",
+										":rentalId"
+									],
+									"variable": [
+										{
+											"key": "rentalId",
+											"value": "9385",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Location mise à jour avec succès",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"rental_id\": 6697,\n  \"rental_date\": \"1992-12-13T03:43:13.780Z\",\n  \"inventory_id\": 5244,\n  \"customer_id\": 6191,\n  \"return_date\": \"1984-10-22T15:47:06.762Z\",\n  \"staff_id\": 4125,\n  \"last_update\": \"1973-03-22T17:29:07.911Z\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/rentals/:rentalId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"rentals",
+												":rentalId"
+											],
+											"variable": [
+												{
+													"key": "rentalId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "Supprime une location par ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/rentals/:rentalId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"rentals",
+										":rentalId"
+									],
+									"variable": [
+										{
+											"key": "rentalId",
+											"value": "9385",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Location supprimée avec succès",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/rentals/:rentalId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"rentals",
+												":rentalId"
+											],
+											"variable": [
+												{
+													"key": "rentalId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": null
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Récupère la liste de toutes les locations",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/rentals",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"rentals"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Une liste de locations",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/rentals",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"rentals"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"rental_id\": 4335,\n    \"rental_date\": \"2024-02-07T05:34:08.208Z\",\n    \"inventory_id\": 6936,\n    \"customer_id\": 9953,\n    \"return_date\": \"1995-08-05T21:56:26.358Z\",\n    \"staff_id\": 6470,\n    \"last_update\": \"1961-08-17T14:07:25.822Z\"\n  },\n  {\n    \"rental_id\": 3194,\n    \"rental_date\": \"1952-09-23T05:58:14.259Z\",\n    \"inventory_id\": 870,\n    \"customer_id\": 259,\n    \"return_date\": \"1974-08-18T19:44:08.108Z\",\n    \"staff_id\": 7150,\n    \"last_update\": \"1969-12-17T01:12:53.508Z\"\n  }\n]"
+						}
+					]
+				},
+				{
+					"name": "Ajoute une nouvelle location",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"rental_id\": 6697,\n  \"rental_date\": \"1992-12-13T03:43:13.780Z\",\n  \"inventory_id\": 5244,\n  \"customer_id\": 6191,\n  \"return_date\": \"1984-10-22T15:47:06.762Z\",\n  \"staff_id\": 4125,\n  \"last_update\": \"1973-03-22T17:29:07.911Z\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/rentals",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"rentals"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Location ajoutée avec succès",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"rental_id\": 6697,\n  \"rental_date\": \"1992-12-13T03:43:13.780Z\",\n  \"inventory_id\": 5244,\n  \"customer_id\": 6191,\n  \"return_date\": \"1984-10-22T15:47:06.762Z\",\n  \"staff_id\": 4125,\n  \"last_update\": \"1973-03-22T17:29:07.911Z\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/rentals",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"rentals"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "inventories",
+			"item": [
+				{
+					"name": "{inventoryId}",
+					"item": [
+						{
+							"name": "Récupère un inventaire par ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/inventories/:inventoryId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"inventories",
+										":inventoryId"
+									],
+									"variable": [
+										{
+											"key": "inventoryId",
+											"value": "9385",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Détails d'un inventaire spécifique",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/inventories/:inventoryId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"inventories",
+												":inventoryId"
+											],
+											"variable": [
+												{
+													"key": "inventoryId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"inventory_id\": 25,\n  \"film_id\": 1912,\n  \"store_id\": 7867,\n  \"last_update\": \"2011-05-04T13:59:26.641Z\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Met à jour un inventaire existant",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"inventory_id\": 25,\n  \"film_id\": 1912,\n  \"store_id\": 7867,\n  \"last_update\": \"2011-05-04T13:59:26.641Z\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/inventories/:inventoryId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"inventories",
+										":inventoryId"
+									],
+									"variable": [
+										{
+											"key": "inventoryId",
+											"value": "9385",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Inventaire mis à jour avec succès",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"inventory_id\": 25,\n  \"film_id\": 1912,\n  \"store_id\": 7867,\n  \"last_update\": \"2011-05-04T13:59:26.641Z\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/inventories/:inventoryId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"inventories",
+												":inventoryId"
+											],
+											"variable": [
+												{
+													"key": "inventoryId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "Supprime un inventaire par ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/inventories/:inventoryId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"inventories",
+										":inventoryId"
+									],
+									"variable": [
+										{
+											"key": "inventoryId",
+											"value": "9385",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Inventaire supprimé avec succès",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/inventories/:inventoryId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"inventories",
+												":inventoryId"
+											],
+											"variable": [
+												{
+													"key": "inventoryId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": null
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Récupère la liste de tous les inventaires",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/inventories",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"inventories"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Une liste d'inventaire",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/inventories",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"inventories"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"inventory_id\": 1032,\n    \"film_id\": 2423,\n    \"store_id\": 8154,\n    \"last_update\": \"1972-01-15T00:25:53.138Z\"\n  },\n  {\n    \"inventory_id\": 7032,\n    \"film_id\": 9947,\n    \"store_id\": 1801,\n    \"last_update\": \"1960-11-08T07:32:44.934Z\"\n  }\n]"
+						}
+					]
+				},
+				{
+					"name": "Ajoute un nouvel inventaire",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"inventory_id\": 25,\n  \"film_id\": 1912,\n  \"store_id\": 7867,\n  \"last_update\": \"2011-05-04T13:59:26.641Z\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/inventories",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"inventories"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Inventaire ajouté avec succès",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"inventory_id\": 25,\n  \"film_id\": 1912,\n  \"store_id\": 7867,\n  \"last_update\": \"2011-05-04T13:59:26.641Z\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/inventories",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"inventories"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "customers",
+			"item": [
+				{
+					"name": "{customerId}",
+					"item": [
+						{
+							"name": "Récupère un client par ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/customers/:customerId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"customers",
+										":customerId"
+									],
+									"variable": [
+										{
+											"key": "customerId",
+											"value": "9385",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Détails d'un client spécifique",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/customers/:customerId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"customers",
+												":customerId"
+											],
+											"variable": [
+												{
+													"key": "customerId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"customer_id\": 1802,\n  \"store_id\": 6928,\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"email\": \"string\",\n  \"address_id\": 176,\n  \"active\": false,\n  \"create_date\": \"2013-11-10T11:36:22.194Z\",\n  \"last_update\": \"1993-04-02T15:30:29.553Z\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Met à jour un client existant",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"customer_id\": 1802,\n  \"store_id\": 6928,\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"email\": \"string\",\n  \"address_id\": 176,\n  \"active\": false,\n  \"create_date\": \"2013-11-10T11:36:22.194Z\",\n  \"last_update\": \"1993-04-02T15:30:29.553Z\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/customers/:customerId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"customers",
+										":customerId"
+									],
+									"variable": [
+										{
+											"key": "customerId",
+											"value": "9385",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Client mis à jour avec succès",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"customer_id\": 1802,\n  \"store_id\": 6928,\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"email\": \"string\",\n  \"address_id\": 176,\n  \"active\": false,\n  \"create_date\": \"2013-11-10T11:36:22.194Z\",\n  \"last_update\": \"1993-04-02T15:30:29.553Z\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/customers/:customerId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"customers",
+												":customerId"
+											],
+											"variable": [
+												{
+													"key": "customerId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "Supprime un client par ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/customers/:customerId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"customers",
+										":customerId"
+									],
+									"variable": [
+										{
+											"key": "customerId",
+											"value": "9385",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Client supprimé avec succès",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/customers/:customerId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"customers",
+												":customerId"
+											],
+											"variable": [
+												{
+													"key": "customerId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": null
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Récupère la liste de tous les clients",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/customers",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customers"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Une liste de clients",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/customers",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"customers"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"customer_id\": 6402,\n    \"store_id\": 6092,\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"email\": \"string\",\n    \"address_id\": 8488,\n    \"active\": false,\n    \"create_date\": \"1967-06-29T16:58:07.652Z\",\n    \"last_update\": \"1952-11-12T21:54:09.113Z\"\n  },\n  {\n    \"customer_id\": 1959,\n    \"store_id\": 7496,\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"email\": \"string\",\n    \"address_id\": 9786,\n    \"active\": true,\n    \"create_date\": \"1982-08-18T04:11:45.602Z\",\n    \"last_update\": \"1956-05-02T06:14:55.895Z\"\n  }\n]"
+						}
+					]
+				},
+				{
+					"name": "Ajoute un nouveau client",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"customer_id\": 1802,\n  \"store_id\": 6928,\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"email\": \"string\",\n  \"address_id\": 176,\n  \"active\": false,\n  \"create_date\": \"2013-11-10T11:36:22.194Z\",\n  \"last_update\": \"1993-04-02T15:30:29.553Z\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/customers",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customers"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Client ajouté avec succès",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"customer_id\": 1802,\n  \"store_id\": 6928,\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"email\": \"string\",\n  \"address_id\": 176,\n  \"active\": false,\n  \"create_date\": \"2013-11-10T11:36:22.194Z\",\n  \"last_update\": \"1993-04-02T15:30:29.553Z\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/customers",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"customers"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "staffs",
+			"item": [
+				{
+					"name": "{staffId}",
+					"item": [
+						{
+							"name": "Récupère un membre du personnel par ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/staffs/:staffId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"staffs",
+										":staffId"
+									],
+									"variable": [
+										{
+											"key": "staffId",
+											"value": "9385",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Détails d'un membre du personnel spécifique",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/staffs/:staffId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"staffs",
+												":staffId"
+											],
+											"variable": [
+												{
+													"key": "staffId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"staff_id\": 1481,\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"address_id\": 8539,\n  \"email\": \"string\",\n  \"store_id\": 9328,\n  \"active\": true,\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"last_update\": \"2012-01-03T17:57:27.803Z\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Met à jour un membre du personnel existant",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"staff_id\": 1481,\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"address_id\": 8539,\n  \"email\": \"string\",\n  \"store_id\": 9328,\n  \"active\": true,\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"last_update\": \"2012-01-03T17:57:27.803Z\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/staffs/:staffId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"staffs",
+										":staffId"
+									],
+									"variable": [
+										{
+											"key": "staffId",
+											"value": "9385",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Membre du personnel mis à jour avec succès",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"staff_id\": 1481,\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"address_id\": 8539,\n  \"email\": \"string\",\n  \"store_id\": 9328,\n  \"active\": true,\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"last_update\": \"2012-01-03T17:57:27.803Z\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/staffs/:staffId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"staffs",
+												":staffId"
+											],
+											"variable": [
+												{
+													"key": "staffId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "Supprime un membre du personnel par ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/staffs/:staffId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"staffs",
+										":staffId"
+									],
+									"variable": [
+										{
+											"key": "staffId",
+											"value": "9385",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Membre du personnel supprimé avec succès",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/staffs/:staffId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"staffs",
+												":staffId"
+											],
+											"variable": [
+												{
+													"key": "staffId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": null
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Récupère la liste de tous les membres du personnel",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/staffs",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"staffs"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Une liste de membres du personnel",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/staffs",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"staffs"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"staff_id\": 5944,\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"address_id\": 1805,\n    \"email\": \"string\",\n    \"store_id\": 568,\n    \"active\": true,\n    \"username\": \"string\",\n    \"password\": \"string\",\n    \"last_update\": \"2021-05-05T20:18:25.277Z\"\n  },\n  {\n    \"staff_id\": 3208,\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"address_id\": 2479,\n    \"email\": \"string\",\n    \"store_id\": 7525,\n    \"active\": true,\n    \"username\": \"string\",\n    \"password\": \"string\",\n    \"last_update\": \"1980-10-29T05:02:09.607Z\"\n  }\n]"
+						}
+					]
+				},
+				{
+					"name": "Ajoute un nouveau membre du personnel",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"staff_id\": 1481,\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"address_id\": 8539,\n  \"email\": \"string\",\n  \"store_id\": 9328,\n  \"active\": true,\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"last_update\": \"2012-01-03T17:57:27.803Z\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/staffs",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"staffs"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Membre du personnel ajouté avec succès",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"staff_id\": 1481,\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"address_id\": 8539,\n  \"email\": \"string\",\n  \"store_id\": 9328,\n  \"active\": true,\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"last_update\": \"2012-01-03T17:57:27.803Z\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/staffs",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"staffs"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "jwt",
+		"jwt": [
+			{
+				"key": "secret",
+				"value": "{{jwtToken}}",
+				"type": "string"
+			},
+			{
+				"key": "algorithm",
+				"value": "HS256",
+				"type": "string"
+			},
+			{
+				"key": "isSecretBase64Encoded",
+				"value": false,
+				"type": "boolean"
+			},
+			{
+				"key": "payload",
+				"value": "{}",
+				"type": "string"
+			},
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			},
+			{
+				"key": "headerPrefix",
+				"value": "Bearer",
+				"type": "string"
+			},
+			{
+				"key": "queryParamKey",
+				"value": "token",
+				"type": "string"
+			},
+			{
+				"key": "header",
+				"value": "{}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://virtserver.swaggerhub.com/mchorganization/Peach/0.1"
+		}
+	]
+}
